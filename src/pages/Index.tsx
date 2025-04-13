@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,6 +8,10 @@ import SignUpModal from "@/components/SignUpModal";
 const Index = () => {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+
+  const handleBrowseCourses = () => {
+    setIsSignInModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-[#f5f5f5]">
@@ -67,7 +70,10 @@ const Index = () => {
                 Become proficient in your desired skills
               </p>
               <div>
-                <Button className="bg-white text-gray-800 hover:bg-gray-100">
+                <Button 
+                  onClick={handleBrowseCourses} 
+                  className="bg-white text-gray-800 hover:bg-gray-100"
+                >
                   Browse Course
                 </Button>
               </div>
@@ -145,10 +151,16 @@ const Index = () => {
       </section>
 
       {/* Sign In Modal */}
-      <SignInModal isOpen={isSignInModalOpen} onClose={() => setIsSignInModalOpen(false)} />
+      <SignInModal 
+        isOpen={isSignInModalOpen} 
+        onClose={() => setIsSignInModalOpen(false)} 
+      />
       
       {/* Sign Up Modal */}
-      <SignUpModal isOpen={isSignUpModalOpen} onClose={() => setIsSignUpModalOpen(false)} />
+      <SignUpModal 
+        isOpen={isSignUpModalOpen} 
+        onClose={() => setIsSignUpModalOpen(false)} 
+      />
     </div>
   );
 };
