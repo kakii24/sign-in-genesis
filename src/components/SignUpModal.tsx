@@ -1,16 +1,16 @@
 
 import React, { useState } from "react";
-import { X, Facebook, Apple, Mail, Eye, EyeOff } from "lucide-react";
+import { X, Facebook, Apple, Search, Mail, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import GoogleIcon from "@/components/GoogleIcon";
 
-interface SignInModalProps {
+interface SignUpModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
+const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -19,17 +19,31 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg w-full max-w-md relative overflow-hidden">
+      <div className="bg-white rounded-lg w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row">
         {/* Close button */}
         <button 
           onClick={onClose}
-          className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+          className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 z-10"
           aria-label="Close"
         >
           <X size={20} />
         </button>
 
-        <div className="p-6">
+        {/* Left side - Image */}
+        <div className="md:w-1/2 bg-amber-500/20 relative hidden md:block">
+          <img 
+            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+            alt="Kid coding" 
+            className="object-cover h-full w-full"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex flex-col justify-end p-8">
+            <h2 className="text-white text-2xl font-bold mb-2">Join Our Learning Community</h2>
+            <p className="text-white/90">Start your journey to mastery today!</p>
+          </div>
+        </div>
+
+        {/* Right side - Form */}
+        <div className="p-6 md:p-8 md:w-1/2">
           {/* Logo */}
           <div className="flex justify-center mb-4">
             <div className="flex items-center">
@@ -42,9 +56,9 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
 
           {/* Welcome text */}
           <div className="text-center mb-6">
-            <h2 className="text-xl font-bold mb-2">Welcome Back</h2>
+            <h2 className="text-2xl font-bold mb-2">Create an Account</h2>
             <p className="text-gray-600">
-              Sign in to continue your learning journey
+              Join us and get more benefits. We promise to keep your data safely.
             </p>
           </div>
 
@@ -55,7 +69,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
               className="w-full flex items-center justify-center gap-2 bg-[#1877F2] text-white hover:bg-[#1877F2]/90"
             >
               <Facebook size={18} />
-              <span>Sign In with Facebook</span>
+              <span>Sign Up with Facebook</span>
             </Button>
             
             <Button 
@@ -63,7 +77,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
               className="w-full flex items-center justify-center gap-2 bg-black text-white hover:bg-black/90"
             >
               <Apple size={18} />
-              <span>Sign In with Apple</span>
+              <span>Sign Up with Apple</span>
             </Button>
             
             <Button 
@@ -71,7 +85,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
               className="w-full flex items-center justify-center gap-2 border-gray-300"
             >
               <GoogleIcon />
-              <span>Sign In with Google</span>
+              <span>Sign Up with Google</span>
             </Button>
           </div>
 
@@ -122,15 +136,15 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
                 type="button" 
                 className="w-full bg-green-500 hover:bg-green-600 text-white"
               >
-                Sign In
+                Create Account
               </Button>
             </div>
           </form>
 
-          {/* Sign up link */}
+          {/* Sign in link */}
           <div className="text-center mt-4 text-sm">
-            <span className="text-gray-600">Don't have an Account?</span>{" "}
-            <a href="#" className="text-green-500 hover:underline">Sign Up</a>
+            <span className="text-gray-600">Already have an Account?</span>{" "}
+            <a href="#" className="text-green-500 hover:underline">Sign In</a>
           </div>
         </div>
       </div>
@@ -138,4 +152,4 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default SignInModal;
+export default SignUpModal;

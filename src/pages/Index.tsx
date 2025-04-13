@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, User, ShoppingCart, X, Facebook, Apple, Mail } from "lucide-react";
 import SignInModal from "@/components/SignInModal";
+import SignUpModal from "@/components/SignUpModal";
 
 const Index = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#f5f5f5]">
@@ -37,10 +39,13 @@ const Index = () => {
           <Button variant="ghost" size="icon" className="hidden md:flex">
             <ShoppingCart className="h-5 w-5" />
           </Button>
-          <Button variant="outline" onClick={() => setIsModalOpen(true)}>
+          <Button variant="outline" onClick={() => setIsSignInModalOpen(true)}>
             Login
           </Button>
-          <Button className="bg-green-500 hover:bg-green-600">
+          <Button 
+            className="bg-green-500 hover:bg-green-600"
+            onClick={() => setIsSignUpModalOpen(true)}
+          >
             Sign Up
           </Button>
         </div>
@@ -90,21 +95,56 @@ const Index = () => {
           <p className="text-gray-600 mb-8">We know the best things happen when you try something new</p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-white rounded-lg overflow-hidden shadow">
-                <div className="h-48 bg-gray-200"></div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg">Course Title</h3>
-                  <p className="text-gray-600 text-sm mt-2">Course description goes here</p>
-                </div>
+            <div className="bg-white rounded-lg overflow-hidden shadow">
+              <div className="h-48 bg-gray-200 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                  alt="Web Development"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
-            ))}
+              <div className="p-4">
+                <h3 className="font-semibold text-lg">Web Development Bootcamp</h3>
+                <p className="text-gray-600 text-sm mt-2">Learn modern web development with React, TypeScript and more</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg overflow-hidden shadow">
+              <div className="h-48 bg-gray-200 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                  alt="Data Science"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-lg">Data Science Fundamentals</h3>
+                <p className="text-gray-600 text-sm mt-2">Master data analysis, visualization and machine learning</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg overflow-hidden shadow">
+              <div className="h-48 bg-gray-200 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                  alt="Mobile Development"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-lg">Mobile App Development</h3>
+                <p className="text-gray-600 text-sm mt-2">Build cross-platform mobile apps with React Native</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Sign In Modal */}
-      <SignInModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <SignInModal isOpen={isSignInModalOpen} onClose={() => setIsSignInModalOpen(false)} />
+      
+      {/* Sign Up Modal */}
+      <SignUpModal isOpen={isSignUpModalOpen} onClose={() => setIsSignUpModalOpen(false)} />
     </div>
   );
 };
