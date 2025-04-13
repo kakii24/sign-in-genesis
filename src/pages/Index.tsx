@@ -12,38 +12,42 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#f5f5f5]">
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 py-3 bg-white shadow-sm">
+      {/* Header - Made smaller with reduced padding */}
+      <header className="flex items-center justify-between px-4 py-2 bg-white shadow-sm">
         <div className="flex items-center">
-          <div className="flex items-center mr-6">
-            <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white">
-              <span className="font-bold">M</span>
+          <div className="flex items-center mr-4">
+            <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white">
+              <span className="font-bold text-sm">M</span>
             </div>
-            <span className="ml-2 font-bold text-gray-800">MyCourse.io</span>
+            <span className="ml-2 font-bold text-gray-800 text-sm">MyCourse.io</span>
           </div>
           
           <div className="hidden md:flex items-center relative max-w-md w-full">
             <Input 
               type="text" 
               placeholder="Search for course" 
-              className="pr-8 rounded-md border-gray-300"
+              className="pr-8 rounded-md border-gray-300 h-8 text-sm"
             />
-            <Search className="absolute right-3 h-4 w-4 text-gray-400" />
+            <Search className="absolute right-3 h-3 w-3 text-gray-400" />
           </div>
         </div>
         
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" className="hidden md:inline-flex">
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" className="hidden md:inline-flex text-xs h-8 px-3">
             Become Instructor
           </Button>
-          <Button variant="ghost" size="icon" className="hidden md:flex">
-            <ShoppingCart className="h-5 w-5" />
+          <Button variant="ghost" size="icon" className="hidden md:flex h-8 w-8">
+            <ShoppingCart className="h-4 w-4" />
           </Button>
-          <Button variant="outline" onClick={() => setIsSignInModalOpen(true)}>
+          <Button 
+            variant="outline" 
+            onClick={() => setIsSignInModalOpen(true)}
+            className="text-xs h-8 px-3"
+          >
             Login
           </Button>
           <Button 
-            className="bg-green-500 hover:bg-green-600"
+            className="bg-green-500 hover:bg-green-600 text-xs h-8 px-3"
             onClick={() => setIsSignUpModalOpen(true)}
           >
             Sign Up
