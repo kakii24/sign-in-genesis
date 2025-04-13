@@ -1,12 +1,110 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Search, User, ShoppingCart, X, Facebook, Apple, Mail } from "lucide-react";
+import SignInModal from "@/components/SignInModal";
 
 const Index = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-[#f5f5f5]">
+      {/* Header */}
+      <header className="flex items-center justify-between px-6 py-3 bg-white shadow-sm">
+        <div className="flex items-center">
+          <div className="flex items-center mr-6">
+            <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white">
+              <span className="font-bold">M</span>
+            </div>
+            <span className="ml-2 font-bold text-gray-800">MyCourse.io</span>
+          </div>
+          
+          <div className="hidden md:flex items-center relative max-w-md w-full">
+            <Input 
+              type="text" 
+              placeholder="Search for course" 
+              className="pr-8 rounded-md border-gray-300"
+            />
+            <Search className="absolute right-3 h-4 w-4 text-gray-400" />
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" className="hidden md:inline-flex">
+            Become Instructor
+          </Button>
+          <Button variant="ghost" size="icon" className="hidden md:flex">
+            <ShoppingCart className="h-5 w-5" />
+          </Button>
+          <Button variant="outline" onClick={() => setIsModalOpen(true)}>
+            Login
+          </Button>
+          <Button className="bg-green-500 hover:bg-green-600">
+            Sign Up
+          </Button>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative">
+        <div className="bg-gradient-to-r from-amber-500/60 to-yellow-500/60 py-20">
+          <div className="container mx-auto px-6 flex flex-col md:flex-row">
+            <div className="md:w-1/2 mb-10 md:mb-0 flex flex-col justify-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Learn something new everyday
+              </h1>
+              <p className="text-xl text-gray-800 mb-8">
+                Become proficient in your desired skills
+              </p>
+              <div>
+                <Button className="bg-white text-gray-800 hover:bg-gray-100">
+                  Browse Course
+                </Button>
+              </div>
+            </div>
+            <div className="md:w-1/2 relative">
+              {/* This would be your code editor image */}
+              <div className="rounded-lg shadow-lg overflow-hidden bg-gray-900 ml-auto max-w-md">
+                <div className="h-6 bg-gray-800 flex items-center px-4">
+                  <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div className="p-4 text-green-400 text-sm font-mono">
+                  <div>// example code</div>
+                  <div>function helloWorld() {</div>
+                  <div>&nbsp;&nbsp;console.log("Welcome to MyCourse.io");</div>
+                  <div>}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Course Section Preview */}
+      <section className="py-16 px-6">
+        <div className="container mx-auto">
+          <h2 className="text-2xl font-bold mb-6">Complete your Course Journey</h2>
+          <p className="text-gray-600 mb-8">We know the best things happen when you try something new</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((item) => (
+              <div key={item} className="bg-white rounded-lg overflow-hidden shadow">
+                <div className="h-48 bg-gray-200"></div>
+                <div className="p-4">
+                  <h3 className="font-semibold text-lg">Course Title</h3>
+                  <p className="text-gray-600 text-sm mt-2">Course description goes here</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sign In Modal */}
+      <SignInModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
