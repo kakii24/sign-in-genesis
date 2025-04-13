@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,7 +30,7 @@ const Index = () => {
             <Input 
               type="text" 
               placeholder="Search for course" 
-              className="pr-8 rounded-md border-gray-300 h-8 text-sm"
+              className="pr-8 h-8 text-sm"
             />
             <Search className="absolute right-3 h-3 w-3 text-gray-400" />
           </div>
