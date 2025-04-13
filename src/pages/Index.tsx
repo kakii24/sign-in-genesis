@@ -73,9 +73,9 @@ const Index = () => {
                 </div>
                 <div className="p-4 text-green-400 text-sm font-mono">
                   <div>// example code</div>
-                  <div>function helloWorld() {</div>
+                  <div>function helloWorld() {"{"}</div>
                   <div>&nbsp;&nbsp;console.log("Welcome to MyCourse.io");</div>
-                  <div>}</div>
+                  <div>{"}"}</div>
                 </div>
               </div>
             </div>
